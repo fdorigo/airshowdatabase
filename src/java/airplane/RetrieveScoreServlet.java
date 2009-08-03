@@ -34,12 +34,35 @@ public class RetrieveScoreServlet extends HttpServlet {
         String sqlResult = "";
         String sqlStatement;
         String nnumbers = "";
+        String orderby  = "";
         
         sqlStatement = "select nnumber from Record where needjudging='1'";
+
+        orderby = request.getParameter("orderBy");
+        
+        if (orderby != null) {
+            if (orderby.equals("c1")){
+            }
+            else if (orderby.equals("c2")){
+            }
+            else if (orderby.equals("c3")){
+            }
+            else if (orderby.equals("c4")){
+            }
+            else if (orderby.equals("c5")){
+            }
+            else {
+                orderby = "overall";
+            }
+        }
+        else {
+            orderby = "overall";
+        }
 
         try {
             String username = "airplane";
             String password = "password";
+
             String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
 
             Class.forName("com.mysql.jdbc.Driver");
@@ -54,8 +77,8 @@ public class RetrieveScoreServlet extends HttpServlet {
                 }
             }
 
-            //System.out.println("Looking for " + nnumbers);
-            sqlStatement = "select nnumber,overall,c1,c2,c3,c4,c5 from airplanescore where " + nnumbers + " order by overall desc";
+            sqlStatement = "select nnumber,overall,c1,c2,c3,c4,c5 from airplanescore where " + nnumbers + " order by " + orderby +" desc";
+            System.out.println("Retrieve score: " + sqlStatement);
             resultSet = statement.executeQuery(sqlStatement);
             sqlResult = DBUtil.getScoreTable(resultSet);
 
@@ -70,37 +93,9 @@ public class RetrieveScoreServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        /*
-        System.out.println("Looking for " + nnumbers);
-
-        sqlStatement = "select nnumber,overall,c1,c2,c3,c4,c5 from airplanescore where " + nnumbers + " order by overall desc";
-
-        try {
-            String username = "airplane";
-            String password = "password";
-            String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
-
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(dbURL, username, password);
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlStatement);
-
-            sqlResult = DBUtil.getScoreTable(resultSet);
-
-            resultSet.close();
-            statement.close();
-            connection.close();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        */
-
         HttpSession session = request.getSession();
         session.setAttribute("sqlResult", sqlResult);
+
 
         String url = "/admin.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

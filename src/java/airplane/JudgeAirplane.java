@@ -33,7 +33,10 @@ public class JudgeAirplane extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-        String cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10, cat11, cat12, cat13, cat14, cat15;
+        String  cat1, cat2, cat3, cat4, cat5,
+                cat6, cat7, cat8, cat9, cat10,
+                cat11, cat12, cat13, cat14, cat15,
+                cat16, cat17, cat18;
 
         cat1  = request.getParameter("cat1");
         cat2  = request.getParameter("cat2");
@@ -50,6 +53,9 @@ public class JudgeAirplane extends HttpServlet {
         cat13 = request.getParameter("cat13");
         cat14 = request.getParameter("cat14");
         cat15 = request.getParameter("cat15");
+        cat16 = request.getParameter("cat16");
+        cat17 = request.getParameter("cat17");
+        cat18 = request.getParameter("cat18");
 
         if (cat1  == null) { cat1  = ""; }
         if (cat2  == null) { cat2  = ""; }
@@ -66,6 +72,9 @@ public class JudgeAirplane extends HttpServlet {
         if (cat13 == null) { cat13 = ""; }
         if (cat14 == null) { cat14 = ""; }
         if (cat15 == null) { cat15 = ""; }
+        if (cat16 == null) { cat16 = ""; }
+        if (cat17 == null) { cat17 = ""; }
+        if (cat18 == null) { cat18 = ""; }
 
         String nnumber = request.getParameter("nnumber");
 
@@ -91,9 +100,6 @@ public class JudgeAirplane extends HttpServlet {
                           cat14 + "', '" +
                           cat15 + "');";
 
-
-
-
         System.out.println("Executing: " + sqlStatement);
 
         String sqlResult = "";
@@ -107,6 +113,7 @@ public class JudgeAirplane extends HttpServlet {
             Connection connection = DriverManager.getConnection(dbURL, username, password);
             Statement statement = connection.createStatement();
 
+            /* If the plane was already judged, delete the existing record */
             if (nnumber.length() > 0) {
                 System.out.println("Deleting record...");
                 statement.executeUpdate("delete from airplanescore where nnumber='" + nnumber + "';");
@@ -118,21 +125,81 @@ public class JudgeAirplane extends HttpServlet {
             /**
              * If all the judge fields have been filled, then remove the airplane from the judgeable list...
              */
-            if ( cat1.length()  > 0 && cat2.length()  > 0 && cat3.length()  > 0 && cat4.length()  > 0 && cat5.length()  > 0 &&
-                 cat6.length()  > 0 && cat7.length()  > 0 && cat8.length()  > 0 && cat9.length()  > 0 && cat10.length() > 0 &&
-                 cat11.length() > 0 && cat12.length() > 0 && cat13.length() > 0 && cat14.length() > 0 && cat15.length() > 0 &&
-                 execResult == 1 )
+//            if ( cat1.length()  > 0 && cat2.length()  > 0 && cat3.length()  > 0 && cat4.length()  > 0 && cat5.length()  > 0 &&
+//                 cat6.length()  > 0 && cat7.length()  > 0 && cat8.length()  > 0 && cat9.length()  > 0 && cat10.length() > 0 &&
+//                 cat11.length() > 0 && cat12.length() > 0 && cat13.length() > 0 && cat14.length() > 0 && cat15.length() > 0 &&
+//                 execResult == 1 )
+            try
             {
                 System.out.println("Airplane has been fully judged...");
 
-                int c1,c2,c3,c4,c5,all;
+                int c1=0,c2=0,c3=0,c4=0,c5=0,all=0;
 
-                c1 = Integer.parseInt(cat1) + Integer.parseInt(cat6)  + Integer.parseInt(cat11);
-                c2 = Integer.parseInt(cat2) + Integer.parseInt(cat7)  + Integer.parseInt(cat12);
-                c3 = Integer.parseInt(cat3) + Integer.parseInt(cat8)  + Integer.parseInt(cat13);
-                c4 = Integer.parseInt(cat4) + Integer.parseInt(cat9)  + Integer.parseInt(cat14);
-                c5 = Integer.parseInt(cat5) + Integer.parseInt(cat10) + Integer.parseInt(cat15);
-                all = c1 + c2 + c3 + c4 + c5;
+                /* Vintage */
+                if (cat1.length()  > 0) {
+                    c1 += Integer.parseInt(cat1);
+                }
+                if (cat6.length()  > 0) {
+                    c1 += Integer.parseInt(cat6);
+                }
+                if (cat11.length()  > 0) {
+                    c1 += Integer.parseInt(cat11);
+                }
+
+                /* Warbird */
+                if (cat2.length()  > 0) {
+                    c2 += Integer.parseInt(cat2);
+                }
+                if (cat7.length()  > 0) {
+                    c2 += Integer.parseInt(cat7);
+                }
+                if (cat12.length()  > 0) {
+                    c2 += Integer.parseInt(cat12);
+                }
+
+                /* Homebuilt (Kit) */
+                if (cat3.length()  > 0) {
+                    c3 += Integer.parseInt(cat3);
+                }
+                if (cat8.length()  > 0) {
+                    c3 += Integer.parseInt(cat8);
+                }
+                if (cat13.length()  > 0) {
+                    c3 += Integer.parseInt(cat13);
+                }
+
+                /* Homebuilt (Plan) */
+                if (cat4.length()  > 0) {
+                    c4 += Integer.parseInt(cat4);
+                }
+                if (cat9.length()  > 0) {
+                    c4 += Integer.parseInt(cat9);
+                }
+                if (cat14.length()  > 0) {
+                    c4 += Integer.parseInt(cat14);
+                }
+
+                /* Light Sport */
+                if (cat5.length()  > 0) {
+                    c5 += Integer.parseInt(cat5);
+                }
+                if (cat10.length()  > 0) {
+                    c5 += Integer.parseInt(cat10);
+                }
+                if (cat15.length()  > 0) {
+                    c5 += Integer.parseInt(cat15);
+                }
+
+                /* Overall */
+                if (cat16.length()  > 0) {
+                    all += Integer.parseInt(cat16);
+                }
+                if (cat17.length()  > 0) {
+                    all += Integer.parseInt(cat17);
+                }
+                if (cat18.length()  > 0) {
+                    all += Integer.parseInt(cat18);
+                }
 
                 sqlStatement = "update airplanescore set " +
                         "c1='" + c1 + "', " +
@@ -148,10 +215,13 @@ public class JudgeAirplane extends HttpServlet {
                 execResult = statement.executeUpdate(sqlStatement);
 
             }
+            catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
 
             sqlStatement = "select nnumber,airplanemake,airplanemodel,needjudging,judged from Record where needjudging='1' order by nnumber";
             ResultSet resultSet = statement.executeQuery(sqlStatement);
-            sqlResult = DBUtil.getJudgableTable(resultSet, false);
+            sqlResult = DBUtil.getJudgableTable(resultSet, false, false);
 
             resultSet.close();
             statement.close();

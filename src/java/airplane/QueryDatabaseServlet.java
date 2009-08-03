@@ -34,6 +34,7 @@ public class QueryDatabaseServlet extends HttpServlet {
     throws ServletException, IOException {
 
         boolean displayAll = false;
+        boolean updateRec  = false;
         String retrieveAll = request.getParameter("retrieveAll");
         String sqlStatement;
 
@@ -42,6 +43,11 @@ public class QueryDatabaseServlet extends HttpServlet {
         if (retrieveAll != null) {
             if (retrieveAll.toUpperCase().equals("YES")) {
                 displayAll = true;
+                sqlStatement = "select nnumber,airplanemake,airplanemodel,needjudging,judged from Record order by nnumber";
+            }
+            else if (retrieveAll.toUpperCase().equals("UPDATEREC")) {
+                displayAll = true;
+                updateRec  = true;
                 sqlStatement = "select nnumber,airplanemake,airplanemodel,needjudging,judged from Record order by nnumber";
             }
         }
@@ -58,7 +64,7 @@ public class QueryDatabaseServlet extends HttpServlet {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlStatement);
 
-            sqlResult = DBUtil.getJudgableTable(resultSet, displayAll);
+            sqlResult = DBUtil.getJudgableTable(resultSet, displayAll, updateRec);
 
             resultSet.close();
             statement.close();

@@ -82,6 +82,15 @@ body {
     font-size: 18px;
 }
 
+#leftcolumn .infomsgspan {
+    margin-left: 8px;
+    margin-bottom: 0px;
+    margin-top:180px;
+    color:maroon;
+    line-height: 1.2em;
+    font-size: 12px;
+}
+
 #leftcolumn a.list {
     margin-left: 18px;
     margin-top: 8px;

@@ -14,7 +14,7 @@ import java.sql.*;
  */
 public class DBUtil {
 
-    public static String getJudgableTable(ResultSet results, boolean retrieveAll)
+    public static String getJudgableTable(ResultSet results, boolean retrieveAll, boolean updateRec)
             throws SQLException {
 
         StringBuffer htmlRows = new StringBuffer();
@@ -56,7 +56,11 @@ public class DBUtil {
             for (int i = 1; i <= columnCount; i++) {
                 if (i % columnCount == 1) {
                     if (retrieveAll == true) {
-                        htmlRows.append("<td><a href=\'lookupNNumber?nNumber=" + results.getString(i) + "&updateRecord=true\'>" + results.getString(i) + "</td>");
+                        if (updateRec == true) {
+                            htmlRows.append("<td><a href=\'lookupNNumber?nNumber=" + results.getString(i) + "&updateRecord=true\'>" + results.getString(i) + "</td>");
+                        } else {
+                            htmlRows.append("<td><a href=\'lookupNNumber?nNumber=" + results.getString(i) + "\'>" + results.getString(i) + "</td>");
+                        }
                     } else {
                         htmlRows.append("<td><a href=\'judgeairplane.jsp?nnumber=" + results.getString(i) + "\'>" + results.getString(i) + "</td>");
                     }
@@ -97,12 +101,12 @@ public class DBUtil {
 
 
         htmlRows.append("<th><b> N-Number </b></th>");
-        htmlRows.append("<th><b> Overall </b></th>");
-        htmlRows.append("<th><b> Cat1 </b></th>");
-        htmlRows.append("<th><b> Cat2 </b></th>");
-        htmlRows.append("<th><b> Cat3 </b></th>");
-        htmlRows.append("<th><b> Cat4 </b></th>");
-        htmlRows.append("<th><b> Cat5 </b></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=overall\'><b> Overall </b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c1\'><b> Vintage </b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c2\'><b> Warbird </b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c3\'><b> Homebuilt (Kit) </b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c4\'><b> Homebuilt (Plan) </b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c5\'><b> Light Sport </b></a></th>");
 
         htmlRows.append("</tr>");
 

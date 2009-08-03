@@ -61,7 +61,7 @@
 
         <div id="leftcolumn">
             <h3>Menu</h3>
-            <a class="list" href="admin.jsp">Home / Admin</a> <br>
+            <a class="list" href="admin.jsp?clearPage=true">Home / Admin</a> <br>
             <a class="list" href="nnumber_lookup.jsp">Register New User</a> <br>
             <a class="list" href="register_user.jsp?updateRecord=false">Register (no N-Number)</a> <br>
 
@@ -88,7 +88,7 @@
 
         <form action="registerUser" method="post">
 
-            <table width="600" align="left">
+            <table width="600">
                 <h2>Contact Information</h2>
                 <table cellspacing="5" border="0">
                     <tr>
