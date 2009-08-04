@@ -31,15 +31,13 @@ public class DBUtil {
 
         htmlRows.append("<table width=\"680px\" cellpadding=\"5\" cellspacing=\"0\" border=\"0\">");
         htmlRows.append("<tr>");
-
-        //for (int i=1; i <= columnCount; i++) {
-        //htmlRows.append("<td><b>" + metaData.getColumnName(i) + "</b></td>");
-        //}
-
-        htmlRows.append("<th><b> N-Number </b></th>");
-        htmlRows.append("<th><b> Make </b></th>");
-        htmlRows.append("<th><b> Model </b></th>");
-        htmlRows.append("<th><b> Judgeable? </b></th>");
+        htmlRows.append("<th align=\"left\"><b> NNum </b></th>");
+        htmlRows.append("<th align=\"left\"><b> Make </b></th>");
+        htmlRows.append("<th align=\"left\"><b> Model </b></th>");
+        htmlRows.append("<th align=\"left\"><b> Category </b></th>");
+        if (retrieveAll == true) {
+            htmlRows.append("<th><b> Judgeable? </b></th>");
+        }
         htmlRows.append("<th><b> Judged? </b></th>");
 
         htmlRows.append("</tr>");
@@ -62,19 +60,34 @@ public class DBUtil {
                             htmlRows.append("<td><a href=\'lookupNNumber?nNumber=" + results.getString(i) + "\'>" + results.getString(i) + "</td>");
                         }
                     } else {
-                        htmlRows.append("<td><a href=\'judgeairplane.jsp?nnumber=" + results.getString(i) + "\'>" + results.getString(i) + "</td>");
+                        htmlRows.append("<td><a href=\'judgeairplane.jsp?nnumber=" + results.getString(i) + "&category=" + results.getString("category") + "\'>" + results.getString(i) + "</td>");
                     }
                 } else {
-                    if (i % columnCount == 4 || i % columnCount == 0) {
-                        if (results.getString(i) == null) {
-                            htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">No</td>");
-                        } else if (results.getString(i).equals("1")) {
-                            htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">Yes</td>");
+                    if (retrieveAll == true) {
+                        if (i % columnCount == 5 || i % columnCount == 0) {
+                            if (results.getString(i) == null) {
+                                htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">No</td>");
+                            } else if (results.getString(i).equals("1")) {
+                                htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">Yes</td>");
+                            } else {
+                                htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">No</td>");
+                            }
                         } else {
-                            htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">No</td>");
+                            htmlRows.append("<td style=\"font-size:80%;\">" + results.getString(i) + "</td>");
                         }
-                    } else {
-                        htmlRows.append("<td style=\"font-size:80%;\">" + results.getString(i) + "</td>");
+                    }
+                    else {
+                        if (i % columnCount == 0) {
+                            if (results.getString(i) == null) {
+                                htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">No</td>");
+                            } else if (results.getString(i).equals("1")) {
+                                htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">Yes</td>");
+                            } else {
+                                htmlRows.append("<td align=\"center\" style=\"font-size:80%;\">No</td>");
+                            }
+                        } else {
+                            htmlRows.append("<td style=\"font-size:80%;\">" + results.getString(i) + "</td>");
+                        }
                     }
                 }
             }
@@ -142,16 +155,13 @@ public class DBUtil {
         try {
             String username = "airplane";
             String password = "password";
-            String dbURL = "jdbc:mysql://localhost:3306/faa_test";
+            String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
 
-            String sqlQuery = "SELECT NNUMBER FROM master " + "WHERE NNUMBER ='" + nNum + "';";
+            String sqlQuery = "SELECT NNUMBER FROM Record " + "WHERE NNUMBER ='" + nNum + "';";
 
             Class.forName("com.mysql.jdbc.Driver");
-
             Connection connection = DriverManager.getConnection(dbURL, username, password);
-
             Statement statement = connection.createStatement();
-
             ResultSet nNumberResult = statement.executeQuery(sqlQuery);
 
             retVal = nNumberResult.first();
@@ -161,6 +171,27 @@ public class DBUtil {
             e.printStackTrace();
         }
 
+        if (retVal != true) {
+            try {
+                String username = "airplane";
+                String password = "password";
+                String dbURL = "jdbc:mysql://localhost:3306/faa_test";
+
+                String sqlQuery = "SELECT NNUMBER FROM master " + "WHERE NNUMBER ='" + nNum + "';";
+
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(dbURL, username, password);
+                Statement statement = connection.createStatement();
+
+                ResultSet nNumberResult = statement.executeQuery(sqlQuery);
+
+                retVal = nNumberResult.first();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
         return retVal;
     }
@@ -282,7 +313,7 @@ public class DBUtil {
             String password = "password";
             String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
 
-            String sqlQuery = "SELECT nnumber,arrivaldate,airplanemodel,airplanemake,manufactureyear,airplanecolor,numberofoccupants,homebase,needjudging FROM Record " + "WHERE nnumber ='" + nNum + "';";
+            String sqlQuery = "SELECT nnumber,arrivaldate,airplanemodel,airplanemake,manufactureyear,airplanecolor,numberofoccupants,homebase,needjudging,category FROM Record " + "WHERE nnumber ='" + nNum + "';";
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(dbURL, username, password);
@@ -318,6 +349,9 @@ public class DBUtil {
                 if (sqlResult.getString("needjudging") != null) {
                     aircraft.setNeedJudging(sqlResult.getString("needjudging"));
                 }
+                if (sqlResult.getString("category") != null) {
+                    aircraft.setCategory(sqlResult.getString("category"));
+                }
 
                 recordFound = true;
             }
@@ -325,7 +359,8 @@ public class DBUtil {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } finally {
+        }
+
             if (recordFound != true) {
                 try {
                     String username = "airplane";
@@ -380,7 +415,6 @@ public class DBUtil {
                     e.printStackTrace();
                 }
             }
-        }
 
         return aircraft;
     }

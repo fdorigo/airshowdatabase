@@ -1,7 +1,5 @@
 package business;
 
-import java.util.GregorianCalendar;
-
 /**
  *
  * @author fdorigo
@@ -18,6 +16,7 @@ public class Aircraft {
         this.numberOfOccupants = "";
         this.homeBase = "";
         this.needJudging = "";
+        this.category = "";
     }
 
     public Aircraft(String arrivalDate,
@@ -28,7 +27,8 @@ public class Aircraft {
             String airplaneColorTrim,
             String numberOfOccupants,
             String homeBase,
-            String needjudge) {
+            String needjudge,
+            String cat) {
         this.arrivalDate = arrivalDate;
         this.nNumber = nNumber;
         this.airplaneModel = ariplaneModel;
@@ -38,6 +38,15 @@ public class Aircraft {
         this.numberOfOccupants = numberOfOccupants;
         this.homeBase = homeBase;
         this.needJudging = needjudge;
+        this.category = cat;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getAirplaneModel() {
@@ -121,4 +130,5 @@ public class Aircraft {
     private String numberOfOccupants;
     private String homeBase;
     private String needJudging;
+    private String category;
 }

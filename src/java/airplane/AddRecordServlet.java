@@ -34,16 +34,16 @@ public class AddRecordServlet extends HttpServlet {
             throws ServletException, IOException {
 
         /*Aircraft Owner*/
-        String firstName = request.getParameter("firstName");
-        String lastName = ""; //request.getParameter("lastName");
-        String addressStreetOne = request.getParameter("addressStreetOne");
-        String addressStreetTwo = request.getParameter("addressStreetTwo");
-        String addressCity = request.getParameter("addressCity");
-        String addressState = request.getParameter("addressState");
-        String addressZip = request.getParameter("addressZip");
-        String primaryPhone = request.getParameter("primaryPhone");
-        String secondaryPhone = request.getParameter("secondaryPhone");
-        String emailAddress = request.getParameter("emailAddress");
+        String firstName = request.getParameter("firstName").toUpperCase();
+        String lastName = ""; //request.getParameter("lastName").toUpperCase();
+        String addressStreetOne = request.getParameter("addressStreetOne").toUpperCase();
+        String addressStreetTwo = request.getParameter("addressStreetTwo").toUpperCase();
+        String addressCity = request.getParameter("addressCity").toUpperCase();
+        String addressState = request.getParameter("addressState").toUpperCase();
+        String addressZip = request.getParameter("addressZip").toUpperCase();
+        String primaryPhone = request.getParameter("primaryPhone").toUpperCase();
+        String secondaryPhone = request.getParameter("secondaryPhone").toUpperCase();
+        String emailAddress = request.getParameter("emailAddress").toUpperCase();
 
         User user = new User(firstName,
                 lastName,
@@ -57,15 +57,16 @@ public class AddRecordServlet extends HttpServlet {
                 emailAddress);
 
         /*Aircraft Information*/
-        String arrivalDate = request.getParameter("arrivalDate");
-        String nNumber = request.getParameter("nNumber");
-        String airplaneModel = request.getParameter("airplaneModel");
-        String airplaneMake = request.getParameter("airplaneMake");
-        String manufactureYear = request.getParameter("manufactureYear");
-        String airplaneColorTrim = request.getParameter("airplaneColorTrim");
-        String numberOfOccupants = request.getParameter("numberOfOccupants");
-        String homeBase = request.getParameter("homeBase");
-        String needJudging = request.getParameter("needJudging");
+        String arrivalDate = request.getParameter("arrivalDate").toUpperCase();
+        String nNumber = request.getParameter("nNumber").toUpperCase();
+        String airplaneModel = request.getParameter("airplaneModel").toUpperCase();
+        String airplaneMake = request.getParameter("airplaneMake").toUpperCase();
+        String manufactureYear = request.getParameter("manufactureYear").toUpperCase();
+        String airplaneColorTrim = request.getParameter("airplaneColorTrim").toUpperCase();
+        String numberOfOccupants = request.getParameter("numberOfOccupants").toUpperCase();
+        String homeBase = request.getParameter("homeBase").toUpperCase();
+        String needJudging = request.getParameter("needJudging").toUpperCase();
+        String category = request.getParameter("category").toUpperCase();
 
         Aircraft aircraft = new Aircraft(arrivalDate,
                 nNumber,
@@ -75,7 +76,8 @@ public class AddRecordServlet extends HttpServlet {
                 airplaneColorTrim,
                 numberOfOccupants,
                 homeBase,
-                needJudging);
+                needJudging,
+                category);
 
         String message = "";
         String url = "";
@@ -112,7 +114,7 @@ public class AddRecordServlet extends HttpServlet {
                 retVal = RecordDB.update(user, aircraft, needJudging);
             }
 
-            if ( retVal == 2) {
+            if (retVal == 2) {
                 message = "N-Number already entered in the DB";
                 url = "/register_user.jsp";
             }

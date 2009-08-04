@@ -61,7 +61,7 @@
 
         <div id="leftcolumn">
             <h3>Menu</h3>
-            <a class="list" href="admin.jsp">Home / Admin</a> <br>
+            <a class="list" href="admin.jsp?clearPage=true">Home / Admin</a> <br>
             <a class="list" href="nnumber_lookup.jsp">Register New User</a> <br>
             <a class="list" href="register_user.jsp?updateRecord=false">Register (no N-Number)</a> <br>
 
@@ -88,7 +88,7 @@
 
         <form action="registerUser" method="post">
 
-            <table width="600" align="left">
+            <table width="600">
                 <h2>Contact Information</h2>
                 <table cellspacing="5" border="0">
                     <tr>
@@ -144,13 +144,49 @@
                     <tr>
                         <td align="right">Need Judging:</td>
                         <% if (aircraft.getNeedJudging().equals("1")) {%>
-                        <td align="left"><input type="radio" name="needJudging" value="Yes" checked>Yes
-                        <br><input type="radio" name="needJudging" value="No" >No</td>
+                        <td align="left"><input type="radio" name="needJudging" value="YES" checked>Yes
+                        <br><input type="radio" name="needJudging" value="NO" >No</td>
                         <% } else {%>
-                        <td align="left"><input type="radio" name="needJudging" value="Yes">Yes
-                        <br><input type="radio" name="needJudging" value="No" checked>No</td>
+                        <td align="left"><input type="radio" name="needJudging" value="YES">Yes
+                        <br><input type="radio" name="needJudging" value="NO" checked>No</td>
                         <% }%>
-                        <td><font color="red">*</font></td>
+                        <td>
+                            <select style="margin-left:-155px;" name="category">
+                                <option>Select Category
+                                <% if (aircraft.getCategory().equals("VINTAGE")) {%>
+                                <option value="vintage" selected="selected">Vintage
+                                <% } else {%>
+                                <option value="vintage">Vintage
+                                <% } %>
+                                <% if (aircraft.getCategory().equals("WARBIRD")) {%>
+                                <option value="warbird" selected="selected">Warbird
+                                <% } else {%>
+                                <option value="warbird">Warbird
+                                <% } %>
+                                <% if (aircraft.getCategory().equals("MODERN")) {%>
+                                <option value="modern" selected="selected">Modern
+                                <% } else {%>
+                                <option value="modern">Modern
+                                <% } %>
+                                <% if (aircraft.getCategory().equals("HOMEKIT")) {%>
+                                <option value="homekit" selected="selected">Homebuilt (Kit)
+                                <% } else {%>
+                                <option value="homekit">Homebuilt (Kit)
+                                <% } %>
+                                <% if (aircraft.getCategory().equals("HOMEPLAN")) {%>
+                                <option value="homeplan" selected="selected">Homebuilt (Plan)
+                                <% } else {%>
+                                <option value="homeplan">Homebuilt (Plan)
+                                <% } %>
+                                <% if (aircraft.getCategory().equals("LIGHTSPORT")) {%>
+                                <option value="lightsport" selected="selected">Light Sport
+                                <% } else {%>
+                                <option value="lightsport">Light Sport
+                                <% } %>
+                            </select>
+
+                        </td>
+                        <!-- td><font color="red">*</font></td -->
                     </tr>
                     <tr>
                         <td align="right" width="240">Arrival Date (yyyy-mm-dd):</td>

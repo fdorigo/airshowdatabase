@@ -6,7 +6,6 @@
 package airplane;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.http.HttpSession;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,17 +37,17 @@ public class QueryDatabaseServlet extends HttpServlet {
         String retrieveAll = request.getParameter("retrieveAll");
         String sqlStatement;
 
-        sqlStatement = "select nnumber,airplanemake,airplanemodel,needjudging,judged from Record where needjudging='1' order by nnumber";//request.getParameter("sqlStatement");
+        sqlStatement = "select nnumber,airplanemake,airplanemodel,category,judged from Record where needjudging='1' order by category,nnumber";//request.getParameter("sqlStatement");
 
         if (retrieveAll != null) {
             if (retrieveAll.toUpperCase().equals("YES")) {
                 displayAll = true;
-                sqlStatement = "select nnumber,airplanemake,airplanemodel,needjudging,judged from Record order by nnumber";
+                sqlStatement = "select nnumber,airplanemake,airplanemodel,category,needjudging,judged from Record order by nnumber";
             }
             else if (retrieveAll.toUpperCase().equals("UPDATEREC")) {
                 displayAll = true;
                 updateRec  = true;
-                sqlStatement = "select nnumber,airplanemake,airplanemodel,needjudging,judged from Record order by nnumber";
+                sqlStatement = "select nnumber,airplanemake,airplanemodel,category,needjudging,judged from Record order by nnumber";
             }
         }
 

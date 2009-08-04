@@ -20,7 +20,7 @@ public class RecordDB {
         int retVal = 0;
 
         String judged;
-        if (needJudging.equals("Yes")) {
+        if (needJudging.equals("YES")) {
             judged = "1";
         }
         else {
@@ -34,7 +34,7 @@ public class RecordDB {
                 + "addressstate, addresszip, primaryphone, secondaryphone, "
                 + "emailaddress, arrivaldate, airplanemodel, airplanemake, "
                 + "manufactureyear, airplanecolor, numberofoccupants, homebase, "
-                + "needjudging, judged) "
+                + "needjudging, category, judged) "
                 + "values ('"
                 + aircraft.getNNumber() + "', '"
                 + user.getFirstName() + "', '"
@@ -54,7 +54,8 @@ public class RecordDB {
                 + aircraft.getAirplaneColorTrim() + "', '"
                 + aircraft.getNumberOfOccupants() + "', '"
                 + aircraft.getHomeBase() + "', '"
-                + judged
+                + judged + "', '"
+                + aircraft.getCategory() 
                 + "', '0');";
 
         try {
@@ -94,7 +95,7 @@ public class RecordDB {
         int retVal = 0;
 
         String judged;
-        if (needJudging.equals("Yes")) {
+        if (needJudging.equals("YES")) {
             judged = "1";
         }
         else {
@@ -116,12 +117,13 @@ public class RecordDB {
                 "emailaddress='"    + user.getEmailAddress() + "', " +
                 "arrivaldate='"     + aircraft.getArrivalDate() + "', " +
                 "airplanemodel='"   + aircraft.getAirplaneModel() + "', " +
-                "airplanemake='" + aircraft.getAirplaneMake() + "', " +
-                "manufactureyear='"+ aircraft.getManufactureYear() + "', " +
-                "airplanecolor='" + aircraft.getAirplaneColorTrim() + "', " +
+                "airplanemake='"    + aircraft.getAirplaneMake() + "', " +
+                "manufactureyear='" + aircraft.getManufactureYear() + "', " +
+                "airplanecolor='"   + aircraft.getAirplaneColorTrim() + "', " +
                 "numberofoccupants='"+ aircraft.getNumberOfOccupants() + "', " +
-                "homebase='" + aircraft.getHomeBase() + "', " +
-                "needjudging='" + judged + "', " +
+                "homebase='"        + aircraft.getHomeBase() + "', " +
+                "needjudging='"     + judged + "', " +
+                "category='"        + aircraft.getCategory() + "', " +
                 "judged='0'" + " where nnumber='" +  aircraft.getNNumber() + "';";
 
         try {

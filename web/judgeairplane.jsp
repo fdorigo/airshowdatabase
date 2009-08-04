@@ -15,401 +15,585 @@
     <body>
         <div id="wrapper">
 
-        <div id="banner">
-        <h1>Airplane Judging</h1>
-        </div> <!-- banner -->
+            <div id="banner">
+                <h1>Airplane Judging</h1>
+            </div> <!-- banner -->
 
-        <div id="contentwrapper">
+            <div id="contentwrapper">
 
-        <div id="leftcolumn">
-            <h3>Menu</h3>
-            <a class="list" href="admin.jsp?clearPage=true">Home / Admin</a> <br>
-            <a class="list" href="nnumber_lookup.jsp">Register New User</a> <br>
-            <a class="list" href="register_user.jsp?updateRecord=false">Register (no N-Number)</a> <br>
+                <div id="leftcolumn">
+                    <h3>Menu</h3>
+                    <a class="list" href="admin.jsp?clearPage=true">Home / Admin</a> <br>
+                    <a class="list" href="nnumber_lookup.jsp">Register New User</a> <br>
+                    <a class="list" href="register_user.jsp?updateRecord=false">Register (no N-Number)</a> <br>
 
-            <h3>Info</h3>
-            <p>
-                Enter a value for each judgeable category.
-            </p>
-        </div> <!-- leftcolumn -->
+                    <h3>Info</h3>
+                    <p>
+                        Enter a value for each judgeable category.
+                    </p>
+                </div> <!-- leftcolumn -->
 
-        <div id="maincolumn">
+                <div id="maincolumn">
 
-        <div id="feedback">
-        </div> <!-- feedback -->
+                    <div id="feedback">
+                    </div> <!-- feedback -->
 
-        <%
-        String nnumber = (String) request.getParameter("nnumber");
-        %>
-        <h2 align="center">N-Number for the airplane to judge: <%= nnumber %></h2>
+                    <%
+                    String nnumber = (String) request.getParameter("nnumber");
+                    String category = (String) request.getParameter("category");
 
-        <form action="JudgeAirplane" method="post">
-        <table  cellpadding="20" border="0" cellspacing="0">
-        <tr>
-            <th bgcolor="#f0f0ff">Judge 1</th>
-            <th>Judge 2</th>
-            <th bgcolor="#f0f0ff">Judge 3</th>
-        </tr>
+                    if (nnumber == null) { nnumber = ""; }
+                    if (category == null) { category = ""; }
 
-        <tr>
-        <td bgcolor="#f0f0ff">
-        <table class="jtbl">
-            <tr>
-                <th>Vintage</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat1" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat1" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat1" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat1" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat1" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Warbird</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat2" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat2" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat2" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat2" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat2" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Homebuilt (Kit)</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat3" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat3" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat3" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat3" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat3" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Homebuilt (Plan)</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat4" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat4" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat4" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat4" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat4" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Light Sport</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat5" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat5" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat5" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat5" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat5" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Overall</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat16" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat16" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat16" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat16" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat16" value="5"</td>
-            </tr><tr>
-                <td>6<input type="radio" name="cat16" value="6"</td>
-            </tr><tr>
-                <td>7<input type="radio" name="cat16" value="7"</td>
-            </tr><tr>
-                <td>8<input type="radio" name="cat16" value="8"</td>
-            </tr><tr>
-                <td>9<input type="radio" name="cat16" value="9"</td>
-            </tr><tr>
-                <td>10<input type="radio" name="cat16" value="10"</td>
-            </tr>
-        </table>
-        </td>
+                    %>
+                    <h3>N-Number: <%= nnumber %> </h3>
+                    <h3>Category: <%= category %> </h3>
 
+                    <form action="JudgeAirplane" method="post">
+                        <table cellspacing="20px" width="680px">
+                            <tr><td>
+                                <table bgcolor="#f0f0ff">
+                                    <tr>
+                                        <th>Judge 1</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Fusealage:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Lifting:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="lifting" value="1">1
+                                                <option name="lifting" value="2">2
+                                                <option name="lifting" value="3">3
+                                                <option name="lifting" value="4">4
+                                                <option name="lifting" value="5">5
+                                                <option name="lifting" value="6">6
+                                                <option name="lifting" value="7">7
+                                                <option name="lifting" value="8">8
+                                                <option name="lifting" value="9">9
+                                                <option name="lifting" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Pitch:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="pitch" value="1">1
+                                                <option name="pitch" value="2">2
+                                                <option name="pitch" value="3">3
+                                                <option name="pitch" value="4">4
+                                                <option name="pitch" value="5">5
+                                                <option name="pitch" value="6">6
+                                                <option name="pitch" value="7">7
+                                                <option name="pitch" value="8">8
+                                                <option name="pitch" value="9">9
+                                                <option name="pitch" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Landing:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Cockpit:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Power:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Finish:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Innovation:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Overall:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><th>Judge 2</th> </tr>
+                                    <tr>
+                                        <td>
+                                            Fusealage:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Lifting:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Pitch:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Landing:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Cockpit:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Power:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Finish:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Innovation:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Overall:
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option name="fuse" value="1">1
+                                                <option name="fuse" value="2">2
+                                                <option name="fuse" value="3">3
+                                                <option name="fuse" value="4">4
+                                                <option name="fuse" value="5">5
+                                                <option name="fuse" value="6">6
+                                                <option name="fuse" value="7">7
+                                                <option name="fuse" value="8">8
+                                                <option name="fuse" value="9">9
+                                                <option name="fuse" value="10">10
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td><td>
+                                <table bgcolor="#f0f0ff">
+                                <tr><th>Judge 3</th> </tr>
+                                <tr>
+                                    <td>
+                                        Fusealage:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Lifting:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Pitch:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Landing:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cockpit:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Power:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Finish:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Innovation:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Overall:
+                                    </td>
+                                    <td>
+                                        <select>
+                                            <option name="fuse" value="1">1
+                                            <option name="fuse" value="2">2
+                                            <option name="fuse" value="3">3
+                                            <option name="fuse" value="4">4
+                                            <option name="fuse" value="5">5
+                                            <option name="fuse" value="6">6
+                                            <option name="fuse" value="7">7
+                                            <option name="fuse" value="8">8
+                                            <option name="fuse" value="9">9
+                                            <option name="fuse" value="10">10
+                                        </select>
+                                    </td>
+                                </tr>
+                            </td>
+                        </table>
+                        </tr>
+                        </table>
+                        <input type="hidden" name="nnumber" value="<%= nnumber %>">
+                        <input type="hidden" name="category" value="<%= category %>">
+                        <input class="register-user" type="submit" value="Judge Aircraft">
+                    </form>
 
-        <td>    
-        <table>
-            <tr>
-                <th>Vintage</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat6" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat6" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat6" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat6" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat6" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Warbird</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat7" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat7" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat7" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat7" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat7" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Homebuilt (Kit)</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat8" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat8" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat8" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat8" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat8" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Homebuilt (Plan)</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat9" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat9" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat9" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat9" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat9" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Light Sport</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat10" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat10" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat10" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat10" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat10" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Overall</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat17" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat17" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat17" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat17" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat17" value="5"</td>
-            </tr><tr>
-                <td>6<input type="radio" name="cat17" value="6"</td>
-            </tr><tr>
-                <td>7<input type="radio" name="cat17" value="7"</td>
-            </tr><tr>
-                <td>8<input type="radio" name="cat17" value="8"</td>
-            </tr><tr>
-                <td>9<input type="radio" name="cat17" value="9"</td>
-            </tr><tr>
-                <td>10<input type="radio" name="cat17" value="10"</td>
-            </tr>
-        </table>
-        </td>
+                    <br>
 
-
-        <td bgcolor="#f0f0ff">
-        <table>
-            <tr>
-                <th>Vintage</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat11" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat11" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat11" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat11" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat11" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Warbird</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat12" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat12" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat12" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat12" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat12" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Homebuilt (Kit)</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat13" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat13" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat13" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat13" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat13" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Homebuilt (Plan)</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat14" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat14" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat14" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat14" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat14" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Light Sport</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat15" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat15" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat15" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat15" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat15" value="5"</td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th>Overall</th>
-            </tr>
-            <tr>
-                <td>1<input type="radio" name="cat18" value="1"</td>
-            </tr><tr>
-                <td>2<input type="radio" name="cat18" value="2"</td>
-            </tr><tr>
-                <td>3<input type="radio" name="cat18" value="3"</td>
-            </tr><tr>
-                <td>4<input type="radio" name="cat18" value="4"</td>
-            </tr><tr>
-                <td>5<input type="radio" name="cat18" value="5"</td>
-            </tr><tr>
-                <td>6<input type="radio" name="cat18" value="6"</td>
-            </tr><tr>
-                <td>7<input type="radio" name="cat18" value="7"</td>
-            </tr><tr>
-                <td>8<input type="radio" name="cat18" value="8"</td>
-            </tr><tr>
-                <td>9<input type="radio" name="cat18" value="9"</td>
-            </tr><tr>
-                <td>10<input type="radio" name="cat18" value="10"</td>
-            </tr>
-        </table>
-        </td>
-
-        
-        </tr>
-        </table>
-        <input type="hidden" name="nnumber" value="<%= nnumber%>">
-        <input class="register-user" type="submit" value="Judge Aircraft">
-        </form>
-
-        <br>
-
-        </div> <!-- maincolumn -->
-        </div> <!-- contentwrapper -->
-        <div id="footer">
-           Created by <a href="http://francescodorigo.com"> Francesco Dorigo </a>
-        </div> <!-- footer -->
+                </div> <!-- maincolumn -->
+            </div> <!-- contentwrapper -->
+            <div id="footer">
+                Created by <a href="http://francescodorigo.com"> Francesco Dorigo </a>
+            </div> <!-- footer -->
         </div> <!-- wrapper -->
 
     </body>

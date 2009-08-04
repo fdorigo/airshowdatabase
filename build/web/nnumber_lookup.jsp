@@ -39,7 +39,7 @@
 
         <div id="leftcolumn">
             <h3>Menu</h3>
-            <a class="list" href="admin.jsp">Home / Admin</a> <br>
+            <a class="list" href="admin.jsp?clearPage=true">Home / Admin</a> <br>
             <a class="list" href="nnumber_lookup.jsp">Register New User</a> <br>
             <a class="list" href="register_user.jsp?updateRecord=false">Register (no N-Number)</a> <br>
 
