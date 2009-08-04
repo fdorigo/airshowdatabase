@@ -32,78 +32,205 @@ public class JudgeAirplane extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-        String  cat1, cat2, cat3, cat4, cat5,
-                cat6, cat7, cat8, cat9, cat10,
-                cat11, cat12, cat13, cat14, cat15,
-                cat16, cat17, cat18;
-
-        cat1  = request.getParameter("cat1");
-        cat2  = request.getParameter("cat2");
-        cat3  = request.getParameter("cat3");
-        cat4  = request.getParameter("cat4");
-        cat5  = request.getParameter("cat5");
-        cat6  = request.getParameter("cat6");
-        cat7  = request.getParameter("cat7");
-        cat8  = request.getParameter("cat8");
-        cat9  = request.getParameter("cat9");
-        cat10 = request.getParameter("cat10");
-        cat11 = request.getParameter("cat11");
-        cat12 = request.getParameter("cat12");
-        cat13 = request.getParameter("cat13");
-        cat14 = request.getParameter("cat14");
-        cat15 = request.getParameter("cat15");
-        cat16 = request.getParameter("cat16");
-        cat17 = request.getParameter("cat17");
-        cat18 = request.getParameter("cat18");
-
-        if (cat1  == null) { cat1  = ""; }
-        if (cat2  == null) { cat2  = ""; }
-        if (cat3  == null) { cat3  = ""; }
-        if (cat4  == null) { cat4  = ""; }
-        if (cat5  == null) { cat5  = ""; }
-        if (cat6  == null) { cat6  = ""; }
-        if (cat7  == null) { cat7  = ""; }
-        if (cat8  == null) { cat8  = ""; }
-        if (cat9  == null) { cat9  = ""; }
-        if (cat10 == null) { cat10 = ""; }
-        if (cat11 == null) { cat11 = ""; }
-        if (cat12 == null) { cat12 = ""; }
-        if (cat13 == null) { cat13 = ""; }
-        if (cat14 == null) { cat14 = ""; }
-        if (cat15 == null) { cat15 = ""; }
-        if (cat16 == null) { cat16 = ""; }
-        if (cat17 == null) { cat17 = ""; }
-        if (cat18 == null) { cat18 = ""; }
-
         String nnumber = request.getParameter("nnumber");
+        String category = request.getParameter("category");
 
-        String sqlStatement = "insert into airplanescore" +
-                "(nnumber, cat11, cat12, cat13, cat14, cat15, " +
-                          "cat21, cat22, cat23, cat24, cat25, " +
-                          "cat31, cat32, cat33, cat34, cat35) " +
-                          "values ('" +
-                          nnumber  + "', '" +
-                          cat1  + "', '" +
-                          cat2  + "', '" +
-                          cat3  + "', '" +
-                          cat4  + "', '" +
-                          cat5  + "', '" +
-                          cat6  + "', '" +
-                          cat7  + "', '" +
-                          cat8  + "', '" +
-                          cat9  + "', '" +
-                          cat10 + "', '" +
-                          cat11 + "', '" +
-                          cat12 + "', '" +
-                          cat13 + "', '" +
-                          cat14 + "', '" +
-                          cat15 + "');";
+        // Judge 1
+        String fuse1 = request.getParameter("fuse1");
+        String lift1 = request.getParameter("lift1");
+        String pitc1 = request.getParameter("pitc1");
+        String land1 = request.getParameter("land1");
+        String cock1 = request.getParameter("cock1");
+        String powe1 = request.getParameter("powe1");
+        String fini1 = request.getParameter("fini1");
+        String inno1 = request.getParameter("inno1");
+        String over1 = request.getParameter("over1");
+
+        // Judge 2
+        String fuse2 = request.getParameter("fuse2");
+        String lift2 = request.getParameter("lift2");
+        String pitc2 = request.getParameter("pitc2");
+        String land2 = request.getParameter("land2");
+        String cock2 = request.getParameter("cock2");
+        String powe2 = request.getParameter("powe2");
+        String fini2 = request.getParameter("fini2");
+        String inno2 = request.getParameter("inno2");
+        String over2 = request.getParameter("over2");
+
+        // Judge 3
+        String fuse3 = request.getParameter("fuse3");
+        String lift3 = request.getParameter("lift3");
+        String pitc3 = request.getParameter("pitc3");
+        String land3 = request.getParameter("land3");
+        String cock3 = request.getParameter("cock3");
+        String powe3 = request.getParameter("powe3");
+        String fini3 = request.getParameter("fini3");
+        String inno3 = request.getParameter("inno3");
+        String over3 = request.getParameter("over3");
+
+        if (fuse1 == null) {
+            System.out.println("ERR: fuse 1 is NULL");
+        }
+        else {
+            System.out.println("INF: fuse 1 is: " + fuse1);
+        }
+
+        if (fuse1  == null) { fuse1  = ""; }
+        if (lift1  == null) { lift1  = ""; }
+        if (pitc1  == null) { pitc1  = ""; }
+        if (land1  == null) { land1  = ""; }
+        if (cock1  == null) { cock1  = ""; }
+        if (powe1  == null) { powe1  = ""; }
+        if (fini1  == null) { fini1  = ""; }
+        if (inno1  == null) { inno1  = ""; }
+        if (over1  == null) { over1  = ""; }
+
+        if (fuse2  == null) { fuse2  = ""; }
+        if (lift2  == null) { lift2  = ""; }
+        if (pitc2  == null) { pitc2  = ""; }
+        if (land2  == null) { land2  = ""; }
+        if (cock2  == null) { cock2  = ""; }
+        if (powe2  == null) { powe2  = ""; }
+        if (fini2  == null) { fini2  = ""; }
+        if (inno2  == null) { inno2  = ""; }
+        if (over2  == null) { over2  = ""; }
+
+        if (fuse3  == null) { fuse3  = ""; }
+        if (lift3  == null) { lift3  = ""; }
+        if (pitc3  == null) { pitc3  = ""; }
+        if (land3  == null) { land3  = ""; }
+        if (cock3  == null) { cock3  = ""; }
+        if (powe3  == null) { powe3  = ""; }
+        if (fini3  == null) { fini3  = ""; }
+        if (inno3  == null) { inno3  = ""; }
+        if (over3  == null) { over3  = ""; }
+
+        if (nnumber == null) {
+            System.out.println("FATAL: nnumber cannot be null");
+        }
+        if (category == null) {
+            System.out.println("FATAL: category cannot be null");
+        }
+
+        int fuse=0,lift=0,pitc=0,land=0,cock=0,powe=0,fini=0,inno=0,over=0;
+
+        try {
+            if (fuse1.length()  > 0) {
+                fuse += Integer.parseInt(fuse1);
+            }
+            if (fuse2.length()  > 0) {
+                fuse += Integer.parseInt(fuse2);
+            }
+            if (fuse3.length()  > 0) {
+                fuse += Integer.parseInt(fuse3);
+            }
+
+            if (lift1.length()  > 0) {
+                lift += Integer.parseInt(lift1);
+            }
+            if (lift2.length()  > 0) {
+                lift += Integer.parseInt(lift2);
+            }
+            if (lift3.length()  > 0) {
+                lift += Integer.parseInt(lift3);
+            }
+
+            if (pitc1.length()  > 0) {
+                pitc += Integer.parseInt(pitc1);
+            }
+            if (pitc2.length()  > 0) {
+                pitc += Integer.parseInt(pitc2);
+            }
+            if (pitc3.length()  > 0) {
+                pitc += Integer.parseInt(pitc3);
+            }
+
+            if (land1.length()  > 0) {
+                land += Integer.parseInt(land1);
+            }
+            if (land2.length()  > 0) {
+                land += Integer.parseInt(land2);
+            }
+            if (land3.length()  > 0) {
+                land += Integer.parseInt(land3);
+            }
+
+            if (cock1.length()  > 0) {
+                cock += Integer.parseInt(cock1);
+            }
+            if (cock2.length()  > 0) {
+                cock += Integer.parseInt(cock2);
+            }
+            if (cock3.length()  > 0) {
+                cock += Integer.parseInt(cock3);
+            }
+
+            if (powe1.length()  > 0) {
+                powe += Integer.parseInt(powe1);
+            }
+            if (powe2.length()  > 0) {
+                powe += Integer.parseInt(powe2);
+            }
+            if (powe3.length()  > 0) {
+                powe += Integer.parseInt(powe3);
+            }
+
+            if (fini1.length()  > 0) {
+                fini += Integer.parseInt(fini1);
+            }
+            if (fini2.length()  > 0) {
+                fini += Integer.parseInt(fini2);
+            }
+            if (fini3.length()  > 0) {
+                fini += Integer.parseInt(fini3);
+            }
+
+            if (inno1.length()  > 0) {
+                inno += Integer.parseInt(inno1);
+            }
+            if (inno2.length()  > 0) {
+                inno += Integer.parseInt(inno2);
+            }
+            if (inno3.length()  > 0) {
+                inno += Integer.parseInt(inno3);
+            }
+
+            if (over1.length()  > 0) {
+                over += Integer.parseInt(over1);
+            }
+            if (over2.length()  > 0) {
+                over += Integer.parseInt(over2);
+            }
+            if (over3.length()  > 0) {
+                over += Integer.parseInt(over3);
+            }
+        }
+        catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        String sqlStatement = "insert into airplanescore " +
+                "(nnumber, fuselage, lifting, pitch, landing, cockpit, power, finish, innovation, overall, category) " +
+                "values ('" +
+                nnumber  + "', '" +
+                fuse  + "', '" +
+                lift  + "', '" +
+                pitc  + "', '" +
+                land  + "', '" +
+                cock  + "', '" +
+                powe  + "', '" +
+                fini  + "', '" +
+                inno  + "', '" +
+                over  + "', '" +
+                category + "');";
 
         System.out.println("Executing: " + sqlStatement);
 
         String sqlResult = "";
 
         try {
+            int execResult = 0;
+
             String username = "airplane";
             String password = "password";
             String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
@@ -114,111 +241,19 @@ public class JudgeAirplane extends HttpServlet {
 
             /* If the plane was already judged, delete the existing record */
             if (nnumber.length() > 0) {
-                System.out.println("Deleting record...");
                 statement.executeUpdate("delete from airplanescore where nnumber='" + nnumber + "';");
+                System.out.println("Deleting record: result=" + execResult);
             }
 
-            System.out.println("Updating record...");
-            int execResult = statement.executeUpdate(sqlStatement);
+            execResult = statement.executeUpdate(sqlStatement);
+            System.out.println("Updating record: result=" + execResult);
 
-            /**
-             * If all the judge fields have been filled, then remove the airplane from the judgeable list...
-             */
-//            if ( cat1.length()  > 0 && cat2.length()  > 0 && cat3.length()  > 0 && cat4.length()  > 0 && cat5.length()  > 0 &&
-//                 cat6.length()  > 0 && cat7.length()  > 0 && cat8.length()  > 0 && cat9.length()  > 0 && cat10.length() > 0 &&
-//                 cat11.length() > 0 && cat12.length() > 0 && cat13.length() > 0 && cat14.length() > 0 && cat15.length() > 0 &&
-//                 execResult == 1 )
-            try
-            {
-                System.out.println("Airplane has been fully judged...");
 
-                int c1=0,c2=0,c3=0,c4=0,c5=0,all=0;
+            sqlStatement = "update Record set judged='1' where nnumber='" + nnumber + "';";
+            execResult = statement.executeUpdate(sqlStatement);
+            System.out.println("Airplane has been fully judged: result=" + execResult);
 
-                /* Vintage */
-                if (cat1.length()  > 0) {
-                    c1 += Integer.parseInt(cat1);
-                }
-                if (cat6.length()  > 0) {
-                    c1 += Integer.parseInt(cat6);
-                }
-                if (cat11.length()  > 0) {
-                    c1 += Integer.parseInt(cat11);
-                }
-
-                /* Warbird */
-                if (cat2.length()  > 0) {
-                    c2 += Integer.parseInt(cat2);
-                }
-                if (cat7.length()  > 0) {
-                    c2 += Integer.parseInt(cat7);
-                }
-                if (cat12.length()  > 0) {
-                    c2 += Integer.parseInt(cat12);
-                }
-
-                /* Homebuilt (Kit) */
-                if (cat3.length()  > 0) {
-                    c3 += Integer.parseInt(cat3);
-                }
-                if (cat8.length()  > 0) {
-                    c3 += Integer.parseInt(cat8);
-                }
-                if (cat13.length()  > 0) {
-                    c3 += Integer.parseInt(cat13);
-                }
-
-                /* Homebuilt (Plan) */
-                if (cat4.length()  > 0) {
-                    c4 += Integer.parseInt(cat4);
-                }
-                if (cat9.length()  > 0) {
-                    c4 += Integer.parseInt(cat9);
-                }
-                if (cat14.length()  > 0) {
-                    c4 += Integer.parseInt(cat14);
-                }
-
-                /* Light Sport */
-                if (cat5.length()  > 0) {
-                    c5 += Integer.parseInt(cat5);
-                }
-                if (cat10.length()  > 0) {
-                    c5 += Integer.parseInt(cat10);
-                }
-                if (cat15.length()  > 0) {
-                    c5 += Integer.parseInt(cat15);
-                }
-
-                /* Overall */
-                if (cat16.length()  > 0) {
-                    all += Integer.parseInt(cat16);
-                }
-                if (cat17.length()  > 0) {
-                    all += Integer.parseInt(cat17);
-                }
-                if (cat18.length()  > 0) {
-                    all += Integer.parseInt(cat18);
-                }
-
-                sqlStatement = "update airplanescore set " +
-                        "c1='" + c1 + "', " +
-                        "c2='" + c2 + "', " +
-                        "c3='" + c3 + "', " +
-                        "c4='" + c4 + "', " +
-                        "c5='" + c5 + "', " +
-                        "overall='" + all + "' " +
-                        "where nnumber='" + nnumber + "';";
-                execResult = statement.executeUpdate(sqlStatement);
-
-                sqlStatement = "update Record set judged='1' where nnumber='" + nnumber + "';";
-                execResult = statement.executeUpdate(sqlStatement);
-
-            }
-            catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-
-            sqlStatement = "select nnumber,airplanemake,airplanemodel,needjudging,judged from Record where needjudging='1' order by nnumber";
+            sqlStatement = "select nnumber,airplanemake,airplanemodel,category,judged from Record where needjudging='1' order by category,nnumber";
             ResultSet resultSet = statement.executeQuery(sqlStatement);
             sqlResult = DBUtil.getJudgableTable(resultSet, false, false);
 

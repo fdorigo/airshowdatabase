@@ -109,21 +109,27 @@ public class DBUtil {
 
         htmlRows.append("<h2> Airplanes Scores </h2>");
 
-        htmlRows.append("<table width=\"680px\" cellpadding=\"5\" cellspacing=\"0\" border=\"0\">");
+        htmlRows.append("<table style=\"font-size:80%; width=\"680px\" cellpadding=\"5\" cellspacing=\"0\" border=\"0\">");
         htmlRows.append("<tr>");
 
 
         htmlRows.append("<th><b> N-Number </b></th>");
-        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=overall\'><b> Overall </b></a></th>");
-        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c1\'><b> Vintage </b></a></th>");
-        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c2\'><b> Warbird </b></a></th>");
-        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c3\'><b> Homebuilt (Kit) </b></a></th>");
-        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c4\'><b> Homebuilt (Plan) </b></a></th>");
-        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=c5\'><b> Light Sport </b></a></th>");
+        //htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=category\'> <b>Category</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=overall\'>  <b>Overall</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=fuselage\'> <b>Fuselage</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=lifing\'>   <b>Lifting</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=pitch\'>    <b>Pitch</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=landing\'>  <b>Landing</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=cockpit\'>  <b>Cockpit</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=power\'>    <b>Power</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=finish\'>   <b>Finish</b></a></th>");
+        htmlRows.append("<th><a href=\'RetrieveScoreServlet?orderBy=innovation\'><b>Innovation</b></a></th>");
 
         htmlRows.append("</tr>");
 
         int j = 0;
+        String prevcat = "empty";
+
         while (results.next()) {
             if (j % 2 == 0) {
                 htmlRows.append("<tr bgcolor=\"#F0F0FF\">");
@@ -133,11 +139,29 @@ public class DBUtil {
             j++;
 
             for (int i = 1; i <= columnCount; i++) {
-                if (i % columnCount == 1) {
-                    htmlRows.append("<td><a href=\'lookupNNumber?nNumber=" + results.getString(i) + "&updateRecord=false\'>" + results.getString(i) + "</td>");
-                } else {
-                    htmlRows.append("<td style=\"font-size:100%; text-align:center;\">" + results.getString(i) + "</td>");
+                if (i == 1) {
+                    if (results.getString(i+1) != null && results.getString(i+1).equals(prevcat)) {
+
+                    }
+                    else
+                    {
+                        htmlRows.append("<td bgcolor=\"#FFB0B0\" colspan=\"" + (columnCount) + "\" style=\"text-align:center;\">" + results.getString(i+1) + "</td></tr>");
+                        htmlRows.append("<tr>");
+                        j++;
+                    }
+                    prevcat = results.getString(i+1);
                 }
+
+                if (i == 2) {
+                }
+                else {
+                    if (i % columnCount == 1) {
+                        htmlRows.append("<td><a href=\'lookupNNumber?nNumber=" + results.getString(i) + "&updateRecord=false\'>" + results.getString(i) + "</td>");
+                    } else {
+                        htmlRows.append("<td style=\"text-align:center;\">" + results.getString(i) + "</td>");
+                    }
+                }
+
             }
         }
 

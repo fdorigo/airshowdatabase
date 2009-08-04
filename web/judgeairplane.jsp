@@ -39,551 +39,560 @@
                     </div> <!-- feedback -->
 
                     <%
-                    String nnumber = (String) request.getParameter("nnumber");
-                    String category = (String) request.getParameter("category");
+                        String nnumber = (String) request.getParameter("nnumber");
+                        String category = (String) request.getParameter("category");
 
-                    if (nnumber == null) { nnumber = ""; }
-                    if (category == null) { category = ""; }
-
+                        if (nnumber == null) {
+                            nnumber = "";
+                        }
+                        if (category == null) {
+                            category = "";
+                        }
                     %>
-                    <h3>N-Number: <%= nnumber %> </h3>
-                    <h3>Category: <%= category %> </h3>
+                    <h3>N-Number: <%= nnumber%> </h3>
+                    <h3>Category: <%= category%> </h3>
 
                     <form action="JudgeAirplane" method="post">
                         <table cellspacing="20px" width="680px">
-                            <tr><td>
-                                <table bgcolor="#f0f0ff">
-                                    <tr>
-                                        <th>Judge 1</th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Fusealage:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Lifting:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="lifting" value="1">1
-                                                <option name="lifting" value="2">2
-                                                <option name="lifting" value="3">3
-                                                <option name="lifting" value="4">4
-                                                <option name="lifting" value="5">5
-                                                <option name="lifting" value="6">6
-                                                <option name="lifting" value="7">7
-                                                <option name="lifting" value="8">8
-                                                <option name="lifting" value="9">9
-                                                <option name="lifting" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Pitch:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="pitch" value="1">1
-                                                <option name="pitch" value="2">2
-                                                <option name="pitch" value="3">3
-                                                <option name="pitch" value="4">4
-                                                <option name="pitch" value="5">5
-                                                <option name="pitch" value="6">6
-                                                <option name="pitch" value="7">7
-                                                <option name="pitch" value="8">8
-                                                <option name="pitch" value="9">9
-                                                <option name="pitch" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Landing:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Cockpit:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Power:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Finish:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Innovation:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Overall:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
-                                <table>
-                                    <tr><th>Judge 2</th> </tr>
-                                    <tr>
-                                        <td>
-                                            Fusealage:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Lifting:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Pitch:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Landing:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Cockpit:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Power:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Finish:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Innovation:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Overall:
-                                        </td>
-                                        <td>
-                                            <select>
-                                                <option name="fuse" value="1">1
-                                                <option name="fuse" value="2">2
-                                                <option name="fuse" value="3">3
-                                                <option name="fuse" value="4">4
-                                                <option name="fuse" value="5">5
-                                                <option name="fuse" value="6">6
-                                                <option name="fuse" value="7">7
-                                                <option name="fuse" value="8">8
-                                                <option name="fuse" value="9">9
-                                                <option name="fuse" value="10">10
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td><td>
-                                <table bgcolor="#f0f0ff">
-                                <tr><th>Judge 3</th> </tr>
-                                <tr>
-                                    <td>
-                                        Fusealage:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Lifting:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Pitch:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Landing:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Cockpit:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Power:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Finish:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Innovation:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Overall:
-                                    </td>
-                                    <td>
-                                        <select>
-                                            <option name="fuse" value="1">1
-                                            <option name="fuse" value="2">2
-                                            <option name="fuse" value="3">3
-                                            <option name="fuse" value="4">4
-                                            <option name="fuse" value="5">5
-                                            <option name="fuse" value="6">6
-                                            <option name="fuse" value="7">7
-                                            <option name="fuse" value="8">8
-                                            <option name="fuse" value="9">9
-                                            <option name="fuse" value="10">10
-                                        </select>
-                                    </td>
-                                </tr>
-                            </td>
+                            <tr>
+                                <td>
+                                    <table bgcolor="#f0f0ff">
+                                        <tr>
+                                            <th colspan="2" align="center">Judge 1</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Fusealage:
+                                            </td>
+                                            <td>
+                                                <select name="fuse1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Lifting:
+                                            </td>
+                                            <td>
+                                                <select name="lift1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Pitch:
+                                            </td>
+                                            <td>
+                                                <select name ="pitc1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Landing:
+                                            </td>
+                                            <td>
+                                                <select name="land1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Cockpit:
+                                            </td>
+                                            <td>
+                                                <select name="cock1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Power:
+                                            </td>
+                                            <td>
+                                                <select name="powe1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Finish:
+                                            </td>
+                                            <td>
+                                                <select name="fini1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Innovation:
+                                            </td>
+                                            <td>
+                                                <select name="inno1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Overall:
+                                            </td>
+                                            <td>
+                                                <select name="over1">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <th colspan="2" align="center">Judge 2</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Fusealage:
+                                            </td>
+                                            <td>
+                                                <select name="fuse2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Lifting:
+                                            </td>
+                                            <td>
+                                                <select name="lift2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Pitch:
+                                            </td>
+                                            <td>
+                                                <select name="pitc2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Landing:
+                                            </td>
+                                            <td>
+                                                <select name="land2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Cockpit:
+                                            </td>
+                                            <td>
+                                                <select name="cock2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Power:
+                                            </td>
+                                            <td>
+                                                <select name="powe2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Finish:
+                                            </td>
+                                            <td>
+                                                <select name="fini2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Innovation:
+                                            </td>
+                                            <td>
+                                                <select name="inno2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Overall:
+                                            </td>
+                                            <td>
+                                                <select name="over2">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table bgcolor="#f0f0ff">
+                                        <tr>
+                                            <th colspan="2" align="center">Judge 3</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Fusealage:
+                                            </td>
+                                            <td>
+                                                <select name="fuse3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Lifting:
+                                            </td>
+                                            <td>
+                                                <select name="lift3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Pitch:
+                                            </td>
+                                            <td>
+                                                <select name="pitc3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Landing:
+                                            </td>
+                                            <td>
+                                                <select name="land3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Cockpit:
+                                            </td>
+                                            <td>
+                                                <select name="cock3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Power:
+                                            </td>
+                                            <td>
+                                                <select name="powe3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Finish:
+                                            </td>
+                                            <td>
+                                                <select name="fini3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Innovation:
+                                            </td>
+                                            <td>
+                                                <select name="inno3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Overall:
+                                            </td>
+                                            <td>
+                                                <select name="over3">
+                                                    <option value="1">1
+                                                    <option value="2">2
+                                                    <option value="3">3
+                                                    <option value="4">4
+                                                    <option value="5">5
+                                                    <option value="6">6
+                                                    <option value="7">7
+                                                    <option value="8">8
+                                                    <option value="9">9
+                                                    <option value="10">10
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
                         </table>
-                        </tr>
-                        </table>
-                        <input type="hidden" name="nnumber" value="<%= nnumber %>">
-                        <input type="hidden" name="category" value="<%= category %>">
+                        <input type="hidden" name="nnumber" value="<%= nnumber%>">
+                        <input type="hidden" name="category" value="<%= category%>">
                         <input class="register-user" type="submit" value="Judge Aircraft">
                     </form>
 

@@ -71,6 +71,14 @@
         <servlet-name>RetrieveScoreServlet</servlet-name>
         <servlet-class>airplane.RetrieveScoreServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteRecordServlet</servlet-name>
+        <servlet-class>airplane.DeleteRecordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteRecord</servlet-name>
+        <servlet-class>airplane.DeleteRecordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -102,6 +110,14 @@
     <servlet-mapping>
         <servlet-name>RetrieveScoreServlet</servlet-name>
         <url-pattern>/RetrieveScoreServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRecordServlet</servlet-name>
+        <url-pattern>/DeleteRecordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteRecord</servlet-name>
+        <url-pattern>/deleteRecord</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

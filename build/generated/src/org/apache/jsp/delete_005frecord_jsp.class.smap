@@ -1,0 +1,16 @@
+SMAP
+delete_005frecord_jsp.java
+JSP
+*S JSP
+*F
++ 0 delete_record.jsp
+delete_record.jsp
+*L
+5,18:54
+23,11:73
+33,22:84
+55:106,3
+56,6:109
+62:115,3
+63,22:118
+*E

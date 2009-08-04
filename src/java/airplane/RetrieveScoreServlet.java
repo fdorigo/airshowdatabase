@@ -35,35 +35,49 @@ public class RetrieveScoreServlet extends HttpServlet {
         String sqlStatement;
         String nnumbers = "";
         String orderby  = "";
-        
-        sqlStatement = "select nnumber from Record where needjudging='1'";
 
         orderby = request.getParameter("orderBy");
         
         if (orderby != null) {
-            if (orderby.equals("c1")){
+            if (orderby.equals("fuselage")){
+                orderby = "category, fuselage";
             }
-            else if (orderby.equals("c2")){
+            else if (orderby.equals("lifting")){
+                orderby = "category, lifting";
             }
-            else if (orderby.equals("c3")){
+            else if (orderby.equals("pitch")){
+                orderby = "category, pitch";
             }
-            else if (orderby.equals("c4")){
+            else if (orderby.equals("landing")){
+                orderby = "category, landing";
             }
-            else if (orderby.equals("c5")){
+            else if (orderby.equals("cockpit")){
+                orderby = "category, cockpit";
+            }
+            else if (orderby.equals("power")){
+                orderby = "category, power";
+            }
+            else if (orderby.equals("finish")){
+                orderby = "category, finish";
+            }
+            else if (orderby.equals("innovation")){
+                orderby = "category, innovation";
             }
             else {
-                orderby = "overall";
+                orderby = "category,overall";
             }
         }
         else {
-            orderby = "overall";
+            orderby = "category,overall";
         }
+
 
         try {
             String username = "airplane";
             String password = "password";
-
             String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
+
+            sqlStatement = "select nnumber from Record where needjudging='1'";
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(dbURL, username, password);
@@ -77,7 +91,7 @@ public class RetrieveScoreServlet extends HttpServlet {
                 }
             }
 
-            sqlStatement = "select nnumber,overall,c1,c2,c3,c4,c5 from airplanescore where " + nnumbers + " order by " + orderby +" desc";
+            sqlStatement = "select nnumber,category,overall,fuselage,lifting,pitch,landing,cockpit,power,finish,innovation from airplanescore where " + nnumbers + " order by " + orderby +" desc";
             System.out.println("Retrieve score: " + sqlStatement);
             resultSet = statement.executeQuery(sqlStatement);
             sqlResult = DBUtil.getScoreTable(resultSet);

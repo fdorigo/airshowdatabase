@@ -73,6 +73,18 @@
                         <tr>
                             <td>
                                 <form action="queryDatabase" method="post">
+                                    <input type="hidden" name="retrieveAll" value="yes">
+                                    <input type="hidden" name="toolInfo" value="Click on the NNumber to view the registration information">
+                                    <input type="submit" style="width: 200px; font-size: 100%;" value="Display Registered">
+                                </form>
+                            </td>
+                        </tr>
+
+                        <tr><td></td></tr>
+
+                        <tr>
+                            <td>
+                                <form action="queryDatabase" method="post">
                                     <input type="hidden" name="retrieveAll" value="updaterec">
                                     <input type="hidden" name="toolInfo" value="Click on the NNumber to update the registration information">
                                     <input type="submit" style="width: 200px; font-size: 100%;" value="Modify Record">
@@ -82,22 +94,13 @@
 
                         <tr>
                             <td>
-                                <form action="queryDatabase" method="post">
-                                    <input type="hidden" name="deleteRecord" value="yes">
-                                    <input type="submit" disabled="disabled" style="width: 200px; font-size: 100%;" value="Delete Record">
+                                <form action="delete_record.jsp" method="post">
+                                    <input type="submit" style="width: 200px; font-size: 100%;" value="Delete Record">
                                 </form>
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>
-                                <form action="queryDatabase" method="post">
-                                    <input type="hidden" name="retrieveAll" value="yes">
-                                    <input type="hidden" name="toolInfo" value="Click on the NNumber to view the registration information">
-                                    <input type="submit" style="width: 200px; font-size: 100%;" value="Display Registered">
-                                </form>
-                            </td>
-                        </tr>
+                        <tr><td></td></tr>
 
                         <tr>
                             <td>
