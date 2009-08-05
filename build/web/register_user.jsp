@@ -143,7 +143,7 @@
                 <table cellspacing="5" border="0">
                     <tr>
                         <td align="right">Need Judging:</td>
-                        <% if (aircraft.getNeedJudging().equals("1")) {%>
+                        <% if (aircraft.getNeedJudging().equals("1") || aircraft.getNeedJudging().toUpperCase().equals("YES")) {%>
                         <td align="left"><input type="radio" name="needJudging" value="YES" checked>Yes
                         <br><input type="radio" name="needJudging" value="NO" >No</td>
                         <% } else {%>

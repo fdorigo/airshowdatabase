@@ -89,7 +89,12 @@ public class AddRecordServlet extends HttpServlet {
         /**
          * Define mandatory fields here.
          */
-        if (firstName.length() == 0 ||
+        if (category.equals("SELECT CATEGORY"))
+        {
+            message = "Please choose a category for this aircraft";
+            url = "/register_user.jsp";
+        }
+        else if (firstName.length() == 0 ||
                 emailAddress.length() == 0 ||
                 primaryPhone.length() == 0 ||
                 nNumber.length() == 0 ||
