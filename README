@@ -1,0 +1,20 @@
+Airshow Database Application
+
+This is a simple web application written in JSP and Java which uses MySQl as
+database back end to store persisten information. There are two main components
+for this project:
+ 
+ 1. The ability to register new participant to the airshow and manage the 
+    registration forms 
+
+ 2. Store and retrieve score information about the planes that participate
+    in the competition
+
+For more information see the website:
+
+http://fdorigo.github.com/airshowdatabase
+
+Author: 		Francesco Dorigo
+Deployment date:	01 August 2009
+License:		GPL
+
