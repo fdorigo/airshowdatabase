@@ -72,6 +72,14 @@
 
                         <tr>
                             <td>
+                                <form action="loadFAAdata.jsp" method="post">
+                                    <input type="submit" style="width: 200px; font-size: 100%;" value="Load FAA Record">
+                                </form>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
                                 <form action="queryDatabase" method="post">
                                     <input type="hidden" name="retrieveAll" value="yes">
                                     <input type="hidden" name="toolInfo" value="Click on the NNumber to view the registration information">

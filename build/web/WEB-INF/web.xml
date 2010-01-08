@@ -79,6 +79,10 @@
         <servlet-name>deleteRecord</servlet-name>
         <servlet-class>airplane.DeleteRecordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadFAADataServlet</servlet-name>
+        <servlet-class>airplane.LoadFAADataServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -118,6 +122,10 @@
     <servlet-mapping>
         <servlet-name>deleteRecord</servlet-name>
         <url-pattern>/deleteRecord</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadFAADataServlet</servlet-name>
+        <url-pattern>/LoadFAADataServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

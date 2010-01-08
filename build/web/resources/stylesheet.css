@@ -51,7 +51,7 @@ body {
 }
 
 #maincolumn{
-    float: left;
+    /*float: left;*/
     margin: 0px 0px 0px 20px;
     border-style:solid;
     border-width:0px;
@@ -67,6 +67,16 @@ body {
     border-width:0px;
     border-color:navy;
 
+}
+
+#maincolumn p {
+    margin-left: 210px;
+    line-height: 1.2em;
+    font-size: 12px;
+}
+
+#maincolumn h2, table {
+    margin-left: 210px;
 }
 
 #leftcolumn p {

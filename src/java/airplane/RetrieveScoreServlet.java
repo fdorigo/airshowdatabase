@@ -68,14 +68,14 @@ public class RetrieveScoreServlet extends HttpServlet {
             }
         }
         else {
-            orderby = "category,overall";
+            orderby = "category,grandtotal";
         }
 
 
         try {
             String username = "airplane";
             String password = "password";
-            String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
+            String dbURL = "jdbc:mysql://localhost:3306/airplane";
 
             sqlStatement = "select nnumber from Record where needjudging='1'";
 
@@ -91,10 +91,11 @@ public class RetrieveScoreServlet extends HttpServlet {
                 }
             }
 
-            sqlStatement = "select nnumber,category,overall,fuselage,lifting,pitch,landing,cockpit,power,finish,innovation from airplanescore where " + nnumbers + " order by " + orderby +" desc";
+            sqlStatement = "select nnumber, category, total1, total2, total3, grandtotal" +
+                    " from airplanescore2 where " + nnumbers + " order by " + orderby +" desc";
             System.out.println("Retrieve score: " + sqlStatement);
             resultSet = statement.executeQuery(sqlStatement);
-            sqlResult = DBUtil.getScoreTable(resultSet);
+            sqlResult = DBUtil.getScoreTable2(resultSet);
 
             resultSet.close();
             statement.close();

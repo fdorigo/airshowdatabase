@@ -53,10 +53,10 @@
                     <h3>Category: <%= category%> </h3>
 
                     <form action="JudgeAirplane" method="post">
-                        <table cellspacing="20px" width="680px">
+                        <table style="margin:0px;" cellspacing="20px" width="680px">
                             <tr>
                                 <td>
-                                    <table bgcolor="#f0f0ff">
+                                    <table style="margin:0px;" bgcolor="#f0f0ff">
                                         <tr>
                                             <th colspan="2" align="center">Judge 1</th>
                                         </tr>
@@ -234,7 +234,7 @@
                                     </table>
                                 </td>
                                 <td>
-                                    <table>
+                                    <table style="margin:0px;">
                                         <tr>
                                             <th colspan="2" align="center">Judge 2</th>
                                         </tr>
@@ -412,7 +412,7 @@
                                     </table>
                                 </td>
                                 <td>
-                                    <table bgcolor="#f0f0ff">
+                                    <table style="margin:0px;" bgcolor="#f0f0ff">
                                         <tr>
                                             <th colspan="2" align="center">Judge 3</th>
                                         </tr>

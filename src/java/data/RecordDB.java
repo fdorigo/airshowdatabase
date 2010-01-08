@@ -61,7 +61,7 @@ public class RecordDB {
         try {
             String username = "airplane";
             String password = "password";
-            String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
+            String dbURL = "jdbc:mysql://localhost:3306/airplane";
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(dbURL, username, password);
@@ -129,7 +129,7 @@ public class RecordDB {
         try {
             String username = "airplane";
             String password = "password";
-            String dbURL = "jdbc:mysql://localhost:3306/AIRPLANE";
+            String dbURL = "jdbc:mysql://localhost:3306/airplane";
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(dbURL, username, password);

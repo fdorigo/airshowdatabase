@@ -49,7 +49,7 @@
 
 
         GregorianCalendar date = new GregorianCalendar();
-        String dateVal = date.get(Calendar.YEAR) + "-" + date.get(Calendar.MONTH) + "-" + date.get(Calendar.DATE);
+        String dateVal = date.get(Calendar.YEAR) + "-" + date.get(Calendar.MONTH) + 1 + "-" + date.get(Calendar.DATE);
         aircraft.setArrivalDate(dateVal);
         %>
 
